@@ -1,2 +1,6 @@
-
-
+USE University;
+CREATE TABLE student (id BIGINT NOT NULL AUTO_INCREMENT, name VARCHAR(255), birthday DATE NOT NULL, 'group' INT,  PRIMARY KEY (id));
+CREATE TABLE subject (id BIGINT NOT NULL AUTO_INCREMENT, name VARCHAR(255), description VARCHAR(255), grade INT NOT NULL, PRIMARY KEY (id));
+CREATE TABLE paymenttype (id BIGINT NOT NULL AUTO_INCREMENT,name VARCHAR(255), PRIMARY KEY (id));
+CREATE TABLE payment (id BIGINT NOT NULL AUTO_INCREMENT, type_id BIGINT, amount DECIMAL, student_id BIGINT, PRIMARY KEY (id), FOREIGN KEY (type_id) REFERENCES paymenttype(id), FOREIGN KEY (student_id) REFERENCES student(id));
+CREATE TABLE mark (id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY, FOREIGN KEY (student_id) REFERENCES student(id), FOREIGN KEY subject_id REFERENCES subject(id), mark int)
